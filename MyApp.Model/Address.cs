@@ -7,21 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyApp.Db
+namespace MyApp.Model
 {
     using System;
     using System.Collections.Generic;
-   
     
-    public partial class Employee
+    public partial class Address
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public Nullable<int> AddressId { get; set; }
-        public string Code { get; set; }
+       
     
-        public virtual Address Address { get; set; }
+        public int Id { get; set; }
+        public string Details { get; set; }
+        public string State { get; set; }
+        public string Country { get; set; }
+    
+        
     }
 }
