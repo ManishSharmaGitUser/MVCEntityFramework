@@ -37,5 +37,52 @@ namespace MVCEntityFramework.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        public ActionResult GetAllEmployeesRecords()
+        {
+           List<safetymodel.Employee> emplist =  repo.GetAllEmployees();
+           return View(emplist);
+        }
+
+        public ActionResult GetEmployeeRecord(int? Id)
+        {
+            dynamic record = null;
+            if (Id!=null)
+            {
+                record = repo.GetEmpRecord(Id.Value);
+                
+            }
+            return View(record);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int? Id)
+        {
+            dynamic record = null;
+            if (Id != null)
+            {
+                record = repo.GetEmpRecord(Id.Value);
+
+            }
+            return View(record);
+        }
+        [HttpPost]
+        public ActionResult Edit(safetymodel.Employee model)
+        {
+
+            bool result = repo.UpdateEmpoyee(model);
+            if (result)
+                return RedirectToAction("GetAllEmployeesRecords");
+            else
+                return View("Edit",model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int Id)
+        {
+            var result = repo.DeleteEmployee(Id);
+            return RedirectToAction("GetAllEmployeesRecords");
+        }
     }
 }
