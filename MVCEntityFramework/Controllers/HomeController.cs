@@ -78,7 +78,7 @@ namespace MVCEntityFramework.Controllers
                 return View("Edit",model);
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Delete(int Id)
         {
             var result = repo.DeleteEmployee(Id);

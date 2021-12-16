@@ -89,14 +89,27 @@ namespace MyApp.Db.DbOperations
             var response = false;
             using (var cntxt = new EmployeeDbEntities())
             {
-                var rec = cntxt.Employees.Where(x => x.Id == model.Id).FirstOrDefault();
+                // var rec = cntxt.Employees.Where(x => x.Id == model.Id).FirstOrDefault();
+                // rec.FirstName = model.FirstName;
+                // rec.Code = model.Code;
+                // rec.Email = model.Email;
+                // rec.LastName = model.LastName;
+                // rec.AddressId = model.AddressId;
+
+                //response = cntxt.SaveChanges() > 0 ? true :false;
+
+
+                //below code for single db hit and update
+                var rec = new Employee();
                 rec.FirstName = model.FirstName;
                 rec.Code = model.Code;
                 rec.Email = model.Email;
                 rec.LastName = model.LastName;
                 rec.AddressId = model.AddressId;
 
-               response = cntxt.SaveChanges() > 0 ? true :false;
+                cntxt.Entry(rec).State = System.Data.Entity.EntityState.Modified;
+                response = cntxt.SaveChanges() > 0 ? true :false;
+
             }
 
             return response;
@@ -106,14 +119,21 @@ namespace MyApp.Db.DbOperations
         {
             using (var context = new EmployeeDbEntities())
             {
-                var emprec = context.Employees.Where(x => x.Id == Id).FirstOrDefault();
-                if (emprec !=null)
-                {
-                    context.Employees.Remove(emprec);
-                    context.SaveChanges();
-                    return true;
-                }
-                return false;
+                //var emprec = context.Employees.Where(x => x.Id == Id).FirstOrDefault();
+                //if (emprec !=null)
+                //{
+                //    context.Employees.Remove(emprec);
+                //    context.SaveChanges();
+                //    return true;
+                //}
+                //return false;
+
+                //below deleting using single db hit
+
+                var emprec = new Employee { Id = Id.Value };
+                context.Entry(emprec).State = System.Data.Entity.EntityState.Deleted;
+                context.SaveChanges();
+                return true;
             }
         }
     }
