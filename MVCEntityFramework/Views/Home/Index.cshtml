@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+</head>
+<body>
+
+    <h2> geetiing Data using Ajax of Json</h2>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-2">
+                <label>Id</label>
+            </div>
+
+            <div class="col-md-2">
+                <h6 id="id"></h6>
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-md-2">
+                <label>AddressId</label>
+            </div>
+
+            <div class="col-md-2">
+                <h6 id="addressid"></h6>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label>Code</label>
+            </div>
+            <div class="col-md-2">
+                <h6 id="code"></h6>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label>Email</label>
+            </div>
+            <div class="col-md-2">
+                <h6 id="email"></h6>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label>First Name</label>
+            </div>
+            <div class="col-md-2">
+                <h6 id="fname"></h6>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label>Last Name</label>
+            </div>
+            <div class="col-md-2">
+                <h6 id="lname"></h6>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+
+
+</html>
+
+<script>
+    $(document).ready(function () {
+
+        GetData();
+    });
+
+    function GetData() {
+        $.ajax({
+            url: "/Home/GetObjectAsJson",
+            method: "GET",
+            success: function(data){
+                //below line will convert json to object
+                data = JSON.parse(data);
+                $("#id").text(data.Id);
+                $("#addressid").text(data.AddressId);
+                $("#code").text(data.Code);
+                $("#email").text(data.Email);
+                $("#fname").text(data.FirstName);
+                $("#lname").text(data.LastName);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+</script>
+

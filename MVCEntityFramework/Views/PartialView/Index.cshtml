@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MyApp.Model.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Using Partial View</title>
+</head>
+<body>
+         @foreach (var item in Model)
+         {
+             @Html.Partial("_PartialViewOne",item)
+         }
+</body>
+</html>
+
