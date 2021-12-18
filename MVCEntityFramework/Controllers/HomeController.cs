@@ -30,7 +30,7 @@ namespace MVCEntityFramework.Controllers
         public ActionResult Create(safetymodel.Employee model)
         {
             var response = Request["g-recaptcha-response"];
-            string secretkey = "6LfufK0dAAAAAJeT5YWVVT5Ad_9Mi9_WxD0sdnRk";
+            string secretkey = "";
             var client = new WebClient();
             var result = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}",secretkey,response));
             var obj = JObject.Parse(result);
