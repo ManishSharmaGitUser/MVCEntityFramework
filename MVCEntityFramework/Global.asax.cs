@@ -13,6 +13,8 @@ namespace MVCEntityFramework
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            //uncomment below code line for global HandleError
+             GlobalFilters.Filters.Add(new HandleErrorAttribute() { View="CustomError"});
         }
     }
 }

@@ -118,7 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HandleErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OutputCacheController.cs" />
     <Compile Include="Controllers\PartialViewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -146,6 +148,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\PartialView\Index.cshtml" />
     <Content Include="Views\Shared\_PartialViewOne.cshtml" />
+    <Content Include="Views\OutputCache\GetDate.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\CustomError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -157,6 +162,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Reports\" />
+    <Folder Include="Views\HandleError\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyApp.Db\MyApp.Db.csproj">

@@ -10,7 +10,14 @@
 <body>
          @foreach (var item in Model)
          {
-             @Html.Partial("_PartialViewOne",item)
+             var aa = @Html.Partial("_PartialViewOne", item);
+
+
+             //always use Html.RenderPartial inside curly braces it is fast b/c directly written to output stream
+
+             
+             //@{ Html.RenderPartial("_PartialViewOne", item);
+             //}
          }
 </body>
 </html>
