@@ -136,5 +136,45 @@ namespace MyApp.Db.DbOperations
                 return true;
             }
         }
+
+        public bool ProcessLogin(safetyModel.User user)
+        {
+            using (var context = new EmployeeDbEntities())
+            {
+                bool isvalid = context.Users.Any(x => x.UserName == user.UserName && x.Password == user.Password);
+
+                return isvalid;
+            }
+        }
+
+        public bool ProcessSignUp(safetyModel.User model)
+        {
+            using (var context = new EmployeeDbEntities())
+            {
+                User user = new User { UserName = model.UserName,Password = model.Password };
+                context.Users.Add(user);
+                bool IsSignedUp =  Convert.ToBoolean(context.SaveChanges());
+                return IsSignedUp;
+            }
+        }
+
+        public string[] GetAllRoles(string username)
+        {
+
+            string[] userroles = Array.Empty<string>(); //{ };
+
+            using (var context = new EmployeeDbEntities())
+            {
+                userroles = (from user in context.Users
+                              join role in context.UserRoles on user.Id equals role.UserId
+                              where user.UserName == username
+                              select role.Role).ToArray();
+                
+
+            }
+
+            return userroles;
+
+        }
     }
 }

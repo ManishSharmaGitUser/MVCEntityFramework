@@ -12,15 +12,12 @@ namespace MyApp.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class UserRole
     {
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public Nullable<int> AddressId { get; set; }
-        public string Code { get; set; }
+        public int UserId { get; set; }
+        public string Role { get; set; }
     
-        public virtual Address Address { get; set; }
+        public virtual User User { get; set; }
     }
 }

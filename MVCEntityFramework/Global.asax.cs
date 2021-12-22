@@ -11,10 +11,12 @@ namespace MVCEntityFramework
     {
         protected void Application_Start()
         {
+            //uncomment below line for globally add Authorize attribute
+            //GlobalFilters.Filters.Add(new AuthorizeAttribute());
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //uncomment below code line for global HandleError
-             GlobalFilters.Filters.Add(new HandleErrorAttribute() { View="CustomError"});
+            // GlobalFilters.Filters.Add(new HandleErrorAttribute() { View="CustomError"});
         }
     }
 }

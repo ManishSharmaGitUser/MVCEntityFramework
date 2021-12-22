@@ -11,6 +11,7 @@ using Newtonsoft.Json.Linq;
 
 namespace MVCEntityFramework.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         EmployeeRepository repo = null;
@@ -20,13 +21,16 @@ namespace MVCEntityFramework.Controllers
             repo = new EmployeeRepository();
         }
         // GET: Home
+        [Authorize(Roles ="Admin,customer")]
         public ActionResult Create()
         {
-           
+           //if you have a string that contains html in string format then you can pass this in @Html.Raw("here ") and 
+           //it gets rendered as html in view
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin,customer")]
         public ActionResult Create(safetymodel.Employee model)
         {
             var response = Request["g-recaptcha-response"];
@@ -89,6 +93,7 @@ namespace MVCEntityFramework.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles ="Admin")]
         public ActionResult Delete(int Id)
         {
             var result = repo.DeleteEmployee(Id);

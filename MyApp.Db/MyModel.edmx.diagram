@@ -8,6 +8,9 @@
         <EntityTypeShape EntityType="EmployeeDbModel.Address" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="EmployeeDbModel.Employee" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="EmployeeDbModel.FK_Employee_Address" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EmployeeDbModel.User" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="EmployeeDbModel.UserRole" Width="1.5" PointX="3" PointY="4.75" />
+        <AssociationConnector Association="EmployeeDbModel.FK_UserRole_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -27,5 +27,7 @@ namespace MyApp.Db
     
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
     }
 }
