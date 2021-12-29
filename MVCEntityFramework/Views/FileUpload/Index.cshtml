@@ -1,0 +1,23 @@
+﻿@model MVCEntityFramework.Models.FileUploadClass
+@{
+    ViewBag.Title = "Index";
+}
+
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div class="container">
+
+            @using (Html.BeginForm("Index","FileUpload",FormMethod.Post,new { @enctype="multipart/form-data"}))
+            {
+                <input type="text" name="Name" /><br />
+                <input type="file" name="file" />
+                <br />
+                <input type="submit" value="Save" />
+            }
+
+        </div>
+    </body>
+    </html>
